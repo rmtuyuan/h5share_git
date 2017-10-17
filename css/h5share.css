@@ -57,6 +57,7 @@ body {
 .video-box>video {
     /*width: 100%;*/
     z-index: 1;
+    
     /*      
             background:transparent url('http://img.s3.huajiao.com/Object.getPreview/hj-img/MzU5NjYzNDkxNTA1MjA4NjQ5ODg2NTA4NDYwMDQ3LmpwZw==/360/640')50% 50% no-repeat;
               
