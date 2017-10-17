@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>全民直播</title>
+    <meta name="description" content="">
+
+    <meta name="keywords" content="" />
+    <!--<link href="css/video-js.css" rel="stylesheet">-->
+    <!-- If you'd like to support IE8 -->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--   <link rel="icon" href="img/favicon.ico"/> -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/h5share.css">
+
+</head>
+
+<body>
+    <!--头部 导航栏-->
+    <header>
+        <div style="display:none;">
+            <!--<img src="img/da2e814d579585e67fcc1fdd6ffe488e-320_320-200_200.jpg" alt="">-->
+        </div>
+    </header>
+    <!--iOS-->
+
+
+    <!--Android-->
+
+    <!--播放视频 直播视频-->
+    <div class="player-main">
+
+        <div class="play-video">
+            <div class="video-container" style="display:block">
+
+                <div class="video-box" style="">
+                    <video id="video" width='100%' autoplay poster="" width='100%' preload="auto" webkit-playsinline="true" src="" playsinline="true"
+                        x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint">
+
+                    </video>
+                </div>
+
+                <!--x5-video-player-fullscreen="true"               
+                 x5-video-orientation="portraint"-->
+                <div class="video-tip-btn">
+                    <div class="video-tip-pause">
+
+                    </div>
+                    <div class="video-tip-waiting">
+
+                    </div>
+                </div>
+                <div class="video-tip video-tip-top">
+                    <a href="#" class="video-tip-btm-1">
+                        <p> <img class="nick_logo" src="" alt=""> </p>
+                        <div>
+                            <span class="nick_name"></span><span class="room_user_count"></span>
+                        </div>
+                    </a>
+                    <a href="#"> 打开全民 关注主播</a>
+
+                </div>
+                <div class="video-tip video-tip-top video-tip-top-2">
+                    <i></i>
+                    <a href="#" class="nick_number"> </a>
+
+                </div>
+                <div class="video-tip video-tip-mid" style="display:none">
+                    <!--弹幕-->
+                    <ul>
+                        <li class="type_msg">
+                            <em class="level_info level_1">4</em>
+                            <span class="color_0">Conrad-翠白远思：</span>
+                            <span>[憨笑]撮撮主播小脸蛋，点赞来一波</span>
+                        </li>
+                        <li class="type_msg">
+                            <em class="level_info level_1">4</em>
+                            <span class="color_0">Conrad思：</span>
+                            <span>dsfdfd</span>
+                        </li>
+                        <li class="type_msg">
+                            <em class="level_info level_1">4</em>
+                            <span class="color_0">Con远思：</span>
+                            <span>点赞来一波</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="video-tip video-tip-btm">
+                    <!--输入框-->
+                    <p class="input-con">
+                        <span> <b class="nick_name" style="font-weight:500;"></b>邀请你陪TA聊天</span>
+                        <a href="#">接受</a>
+                    </p>
+                </div>
+            </div>
+            <div class="erro-img">
+                <!--<img src="img/err-d4bcf8ad0d.png" alt="">-->
+            </div>
+        </div>
+        <!--页面丢失时候显示的-->
+
+    </div>
+    <div class="other-play-video">
+        <p class="title ">
+            <i></i>
+            <span>更多精彩直播</span>
+        </p>
+        <ul class="other-play-video-content clearfloat">
+
+
+
+
+        </ul>
+    </div>
+    </div>
+
+    <!--底部下载-->
+    <footer>
+        <div class="footer-con">
+            <div class="footer-con-1">
+                <div class="qrcode-img"><img src="img/h5share_img_qrcode.jpg" alt=""></div>
+                <div class="qrcode-txt">
+                    <p>长按或者扫描二维码</p>
+                    <h4>查看更多精彩</h4>
+                    <a href="#">立即打开</a>
+                </div>
+            </div>
+            <div class="footer-con-2">
+                <img src="img/h5share_img_logo.jpg" alt="">
+            </div>
+        </div>
+    </footer>
+    <div class="modal-info">
+        <div class="modal-content">
+            <div class="other-modal-info">
+                <p class="info-text info-sure-2">
+
+                </p>
+
+            </div>
+
+        </div>
+        <div class="close-modal">
+
+        </div>
+    </div>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="js/fetch.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="m_js/h5share.js"></script>
+    <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+    <script>
+       
+
+
+
+
+        $(function () {
+            //更新数据
+
+            // live 的  logo  nick_name ID  people 
+            var server = 'http://139.199.23.160:8080/qmzb';
+            var uid = $.getUrlParam("liveid");
+              // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
+            if (uid) {
+                //判断uid
+                var form = new FormData();
+                form.append("login_uid", uid); // 
+
+                fetch(server + "/public/my_info", {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'default',
+                    body: form
+                }).then((response) => response.json()).then(function (data) {
+
+                    if (data.code == 200) {
+                        //请求成功  判断data.data 不为空
+                        if (data.data.length != 0) {
+                            //有数据
+                            // 加载数据 
+
+                            $(".video-box").css("background", "url(" + data.data.icon + ") no-repeat").css(
+                                "background-size", "100% 100%");
+                            $(".nick_logo").attr("src", data.data.user_picture);
+                            $(".nick_name").html(data.data.nick_name);
+                            $(".nick_number").html("直播ID" + data.data.number);
+                            $(".room_user_count").html(data.data.room_user_count + "人");
+                            $(".video-box>video").attr("src", data.data.hls_pull_url);
+                            if (Hls.isSupported()) {
+                                var video = document.getElementById('video');
+                                var hls = new Hls();
+                                hls.loadSource(data.data.hls_pull_url);
+                                hls.attachMedia(video);
+                                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                                    video.play();
+                                });
+                            }
+
+                            var fram = document.createDocumentFragment();
+
+                            if (data.data.room_list.length) {
+                                for (var i = 0; i < data.data.room_list.length; i++) {
+                                    var element = data.data.room_list[i];
+                                    var li = document.createElement("li");
+                                    li.innerHTML = ' <a href="h5share_live.html?liveid=' + element.uid +
+                                        '"><img src="' + element.icon + '" alt=""></a>';
+                                    fram.appendChild(li);
+                                }
+                            }
+
+                            $(".other-play-video-content").html(fram);
+
+                            $(".video-container").show();
+
+
+                        } else {
+                            //没有数据
+                            $(".erro-img").show().siblings(".video-container").hide();
+                        }
+                    } else {
+                        $(".erro-img").show().siblings(".video-container").hide();
+                    }
+                });
+            } else {
+                // alert('页面丢失');
+                $(".erro-img").show().siblings(".video-container").hide();
+            }
+            //弹幕  到 15个删除第一个
+        });
+    </script>
+</body>
+
+</html>

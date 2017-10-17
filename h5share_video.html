@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>全民直播</title>
+    <meta name="description" content="">
+
+    <meta name="keywords" content="" />
+    <!--<link href="css/video-js.css" rel="stylesheet">-->
+    <!--<script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script>-->
+    <!-- If you'd like to support IE8 -->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--   <link rel="icon" href="img/favicon.ico"/> -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/h5share.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--头部 导航栏-->
+    <header>
+
+    </header>
+    <!--iOS-->
+
+
+    <!--Android-->
+
+    <!--播放视频 直播视频-->
+    <div class="player-main">
+
+        <div class="play-video">
+            <div class="video-container" style="display:block"> 
+                <!--<video id="my_video"  class="video-js vjs-default-skin" webkit-playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="" width="100%" preload="auto"  playsinline="" preload="auto"
+                    mpegURL" src="m3u8/index.m3u8">
+                    <source src="m3u8/index.m3u8" type="application/x-mpegURL">
+                </video>-->
+                <div class="video-box" style="">
+                    <video id="video" width='100%' autoplay width='100%' preload="auto" webkit-playsinline="true" src=""
+                        playsinline="true" x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true"
+                        x5-video-orientation="portraint">
+
+                    </video>
+                </div>
+
+                <div class="video-tip-btn">
+                    <div class="video-tip-pause">
+
+                    </div>
+                    <div class="video-tip-waiting">
+
+                    </div>
+                </div>
+                <div class="video-process-bg">
+                    <div class="video-process-line"></div>
+                </div>
+                <div class="video-tip video-tip-top">
+                    <i></i>
+                    <a href="#" class="video-tip-btm-7 video-tip" > 打开全民 更多精彩</a>
+                </div>
+                <div class="video-tip video-tip-btm">
+
+                    <div>
+                        <a href="#" class="video-tip-btm-1 video-tip">
+                            <p> <img src="" class="nick_logo" alt=""> </p>
+                            <span class="nick_name"></span>
+                        </a>
+
+                        <i class="video-tip-btm-2"></i>
+                        <span class="video-tip-btm-3 count video-tip"></span>
+                    </div>
+                    <a href="#" class="video-tip-btm-4 video-tip">关注</a>
+                </div>
+            </div>
+            <div class="erro-img">
+                <!--<img src="img/err-d4bcf8ad0d.png" alt="">-->
+            </div>
+        </div>
+          
+    </div>
+    <div class="other-play-video">
+        <p class="title ">
+            <i></i>
+            <span>更多精彩小视频</span>
+        </p>
+        <ul class="other-play-video-content clearfloat">
+            
+            </ul>
+    </div>
+    </div>
+
+    <!--底部下载-->
+    <footer>
+        <div class="footer-con">
+            <div class="footer-con-1">
+                <div class="qrcode-img"><img src="img/h5share_img_qrcode.jpg" alt=""></div>
+                <div class="qrcode-txt">
+                    <p>长按或者扫描二维码</p>
+                    <h4>查看更多精彩</h4>
+                    <a href="#">立即打开</a>
+                </div>
+            </div>
+            <div class="footer-con-2">
+                <img src="img/h5share_img_logo.jpg" alt="">
+            </div>
+        </div>
+    </footer>
+      <div class="modal-info">
+        <div class="modal-content">
+            <div class="other-modal-info">
+                <p class="info-text info-sure-2">
+
+                </p>
+
+            </div>
+
+        </div>
+        <div class="close-modal">
+
+        </div>
+    </div>
+    <!--d1c9cb-->
+    <script src="js/jquery-1.11.3.js"></script>
+    <!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>-->
+ 
+    <script src="js/fetch.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="m_js/h5share.js"></script>
+    <script>
+        $(function () {
+
+            video.addEventListener("timeupdate", function () {
+                var all_time = video.duration;
+
+                var all_leng = $(".video-process-bg").css("width").slice(0, -2);
+                var now_time = this.currentTime;
+                //    alert( now_time);
+                var now_leng = all_leng / all_time * now_time;
+                $(".video-process-line").css("width", now_leng + "px");
+
+            });
+
+
+              $(function () {
+            //更新数据
+
+            // live 的  logo  nick_name ID  people 
+          var server = 'http://139.199.23.160:8080/qmzb';
+            var vid = $.getUrlParam("vid");
+            //获取分享人的ID
+            // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
+
+
+            if (vid) {
+                //判断uid
+                var form = new FormData();
+                form.append("vid", vid); // 
+
+                fetch(server + "/public/share_video", {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'default',
+                    body: form
+                }).then((response) => response.json()).then(function (data) {
+
+                    if (data.code == 200) {
+                        //请求成功  判断data.data 不为空
+                        if (data.data.length != 0) {
+                            //有数据
+                            // 加载数据 
+                          
+                            $(".video-box").css("background", "url(" + data.data.icon + ") no-repeat").css(
+                                "background-size", "100% 100%");
+                            $(".nick_logo").attr("src", data.data.logo);
+                            $(".nick_name").html(data.data.nickName);
+                            $(".count").html(parseInt(data.data.count));
+                        
+                        
+                            $(".video-box>video").attr("src", data.data.url);
+                            var fram = document.createDocumentFragment();
+
+
+                            if (data.data.video_list.length) {
+                                for (var i = 0; i < data.data.video_list.length; i++) {
+                                    var element = data.data.video_list[i];
+                                    var li = document.createElement("li");
+                                    li.innerHTML = ' <a href="h5share_video.html?vid=' + element.vid +
+                                        '"><img src="' + element.icon + '" alt=""></a>';
+                                    fram.appendChild(li);
+                                }
+                            }
+
+                              $(".other-play-video-content").append(fram);
+
+                            $(".video-container").show();
+
+
+                        } else {
+                            //没有数据
+                             $(".erro-img").show().siblings(".video-container").hide();
+                        }
+                    } else {
+                        $(".erro-img").show().siblings(".video-container").hide();
+                    }
+                });
+            } else {
+                // alert('页面丢失');
+                $(".erro-img").show().siblings(".video-container").hide();
+            }
+            //弹幕  到 15个删除第一个
+        });
+        })
+    </script>
+</body>
+
+</html>

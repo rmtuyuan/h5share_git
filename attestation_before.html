@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>全民直播-实名认证</title>
+    <meta name="description" content="">
+
+    <meta name="keywords" content="" />
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--   <link rel="icon" href="img/favicon.ico"/> -->
+
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/attestation.css" />
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+
+    </header>
+     <div class="nav" style=" display: none;">
+        <div class="container nav-bar">
+            <a href="javascript:;" onclick="GoBackApp()" class="form-nav"> <i class="fa fa-angle-left"></i></a>
+          
+            <span class="text-color-fe form-nav">实名认证</span>
+           
+        </div>
+
+
+    </div>
+    <div class="atte-b-main">
+        <!--提示去认证-->
+        <div class="atte-b-info-text">
+            <h3>您还没有实名认证</h3>
+            <p>根据相关法规，只有实名认证后才可以开播哦~</p>
+        </div>
+        <div class="atte-b-info-img">
+            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+        </div>
+        <div class="atte-b-info-btn">
+            <a href="" style="display:none;">支付宝一键认证</a>
+            <a href="#" class="now-go-check">立即认证</a>
+        </div>
+    </div>
+    <footer>
+    
+        <div></div>
+    </footer>
+    <div></div>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="m_js/attestation.js"></script>
+    <script>
+        $(function() {
+            var login_uid = $.getUrlParam("login_uid");
+            var login_token = $.getUrlParam("login_token");
+            $(".now-go-check").click(function(e) {
+                e.preventDefault();
+                window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" +
+                    login_token;
+            });
+        });
+    </script>
+</body>
+
+</html>

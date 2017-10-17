@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>全民直播-认证主播</title>
+    <meta name="description" content="">
+
+    <meta name="keywords" content="" />
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--   <link rel="icon" href="img/favicon.ico"/> -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/attestation.css">
+    <style>
+        .atte-b-main>div {
+            display: none;
+        }
+
+        .atte-b-main>.atte-b-info-img {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <!--头部 导航栏-->
+    <header>
+
+    </header>
+     <div class="nav" style=" display: none;">
+        <div class="container nav-bar">
+            <a href="javascript:;" onclick="GoBackApp()" class="form-nav"> <i class="fa fa-angle-left"></i></a>
+          
+            <span class="text-color-fe form-nav">实名认证结果</span>
+           
+        </div>
+
+
+    </div>
+    <div class="atte-b-main">
+        <!--提示去认证-->
+        <div class="atte-b-info-text atte-after-info atte-after-succ-info">
+            <h3>恭喜！认证成功</h3>
+            <p>可以开启华丽的直播旅程了</p>
+        </div>
+        <div class="atte-b-info-text atte-after-info atte-after-ing-info" style="display:none;">
+            <h3>审核中....</h3>
+            <p>请您耐心等待</p>
+        </div>
+        <div class="atte-b-info-text atte-after-info atte-after-erro-info" style="display:none;">
+            <h3>认证失败</h3>
+            <p>失败原因: <span class="atte-after-erro-info-txt"></span></p>
+        </div>
+        <div class="atte-b-info-img atte-after-erro-info " style="display:none;">
+            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+        </div>
+        <div class="atte-b-info-img atte-after-ing-info" style="display:none;">
+            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+        </div>
+        <div class="atte-b-info-img  atte-after-succ-info" style="display:none;">
+            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+        </div>
+        <div class="atte-b-info-btn atte-after-succ-info">
+            <a href="javascript:;" onclick="nowPlay()">立即开播</a>
+            <a href="javascript:;" onclick="nowNotPlay()" class="not-play">暂不开播</a>
+        </div>
+        <div class="atte-b-info-btn atte-after-ing-info">
+
+        </div>
+        <div class="atte-b-info-btn atte-after-erro-info">
+            <a href="#" class="now-go-check">立即认证</a>
+            <a href="#" style="display:none">更多认证方式</a>
+        </div>
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <script src="js/fetch.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="m_js/attestation.js"></script>
+    <script>
+        //获取 id token  fetch 刷新页面
+        $(function () {
+            var login_uid = $.getUrlParam("login_uid");
+            var login_token = $.getUrlParam("login_token");
+
+            var form_2 = new FormData();
+            form_2.append("login_uid", login_uid);
+            form_2.append("login_token", login_token);
+            fetch(server + "/user/authentication_status", {
+                method: 'POST',
+                //headers: myHeaders,
+                mode: 'cors',
+                cache: 'default',
+                body: form_2
+            }).then((response) => response.json()).then(function (data) {
+                if (data.code == 200) {
+                    if (data.data.status == 0) {
+                        //0=未处理/1=已通过/-1=未通过/-2=未提交
+                        //审核中
+                        $(".atte-after-ing-info").css("display", "flex");
+                        //审核中的 图片 
+                       
+                    } else if (data.data.status == 1) {
+                        $(".atte-after-succ-info").css("display", "flex");
+
+                    } else if (data.data.status == -1) {
+                        $(".atte-after-erro-info-txt").html(data.refuse_reason);
+                        $(".atte-after-erro-info").css("display", "flex");
+                      
+                    } else {
+                        window.location.href = 'attestation_before.html?login_uid=' + login_uid +
+                            "&login_token=" + login_token;
+                    }
+                } else {
+                    window.location.href = "attestation_form.html";
+                    showInfo('当前网络不稳定,请刷新页面');
+                }
+
+            });
+
+            $(".now-go-check").click(function (e) {
+                e.preventDefault();
+                window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" +
+                    login_token;
+            });
+
+        });
+        function nowPlay() {
+             
+        }
+         function nowNotPlay() {
+            
+        }
+    </script>
+</body>
+
+</html>
+
