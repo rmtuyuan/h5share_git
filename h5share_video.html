@@ -49,7 +49,7 @@
                     <source src="m3u8/index.m3u8" type="application/x-mpegURL">
                 </video>-->
                 <div class="video-box" style="">
-                    <video id="video" width='100%'   autoplay  preload="auto" webkit-playsinline="true" src=""
+                    <video id="video" width="100%" autoplay  preload="auto" webkit-playsinline="true" src=""
                         playsinline="true" x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true"
                         x5-video-orientation="portraint">
 
@@ -150,6 +150,7 @@
                 //    alert( now_time);
                 var now_leng = all_leng / all_time * now_time;
                 $(".video-process-line").css("width", now_leng + "px");
+                
 
             });
 
@@ -181,18 +182,22 @@
                         if (data.data.length != 0) {
                             //有数据
                             // 加载数据 
-                          
-                            $(".video-box").css("background", "url(" + data.data.icon + ") no-repeat").css(
-                                "background-size", "100% 100%");
+                          if(data.data.status==1){
+                              $(".video-box").css("background", "rgba(3,3,3,.6) url(" + data.data.icon + ") no-repeat").css(
+                                "background-size", "100% 100%").css("height","100vh");
                             $(".nick_logo").attr("src", data.data.logo);
                             $(".nick_name").html(data.data.nickName);
                             $(".count").html(parseInt(data.data.count));
-                        
-                        
                             $(".video-box>video").attr("src", data.data.url);
+                           
+                          }else{
+                            
+                               $(".erro-img").show().siblings(".video-container").hide();
+                          }
+                          
                             var fram = document.createDocumentFragment();
 
-
+                            
                             if (data.data.video_list.length) {
                                 for (var i = 0; i < data.data.video_list.length; i++) {
                                     var element = data.data.video_list[i];
@@ -204,9 +209,9 @@
                             }
 
                               $(".other-play-video-content").append(fram);
-
-                            $(".video-container").show();
-
+                               $(".video-container").show();
+                          
+                           
 
                         } else {
                             //没有数据

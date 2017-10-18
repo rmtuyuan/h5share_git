@@ -34,7 +34,7 @@ body {
 }
 
 .play-video {
-    height: 90vh;
+    height: 93vh;
     width: 100vw;
     overflow: hidden;
 }
@@ -43,19 +43,23 @@ body {
     position: relative;
     /*background: #000;*/
     width: 100%;
-    height: 90vh;
+    height: 93vh;
 }
 
 .video-box {
     z-index: 1;
     width: 100%;
-    height: 90vh;
+    height: 93vh;
     /*background: url('http://img.s3.huajiao.com/Object.getPreview/hj-img/MzU5NjYzNDkxNTA1MjA4NjQ5ODg2NTA4NDYwMDQ3LmpwZw==/360/640') no-repeat;*/
     background-size: 100% 100%;
+    text-align: center;
 }
 
 .video-box>video {
     /*width: 100%;*/
+    display: block;
+    /*height: 100%;*/
+    width: 100%;
     z-index: 1;
     
     /*      
@@ -691,7 +695,7 @@ ul .level_33 {
     bottom: 0;
     right: 0;
     background: url("../img/err-d4bcf8ad0d.png") no-repeat;
-    background-size: 100% 90%;
+    background-size: 100% 93%;
     display: none;
     z-index: 160;
 }

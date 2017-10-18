@@ -87,7 +87,7 @@ $(window).load(function () {
 
     } else {
         $('.video-tip-pause').hide();
-        $(".video-container").css("height", '90vh')
+        $(".video-container").css("height", '93vh')
     }
 
     video.addEventListener("timeupdate", function () {
@@ -96,7 +96,7 @@ $(window).load(function () {
 
         if (now_time && !this.paused) {
             $('.video-tip-pause').hide();
-            $(".video-container").css("height", '90vh')
+            $(".video-container").css("height", '93vh')
         } else {
             $('.video-tip-pause').show();
         }
@@ -105,7 +105,7 @@ $(window).load(function () {
     $(".video-tip-btn").click(function () {
         if (video.paused) {
             video.play();
-            $(".video-container").css("height", '90vh')
+            $(".video-container").css("height", '93vh')
             $('.video-tip-pause').hide();
 
         } else {
