@@ -162,37 +162,39 @@
     <script src="m_js/h5share.js"></script>
     <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
     <script>
-       
-
-
-
-
         $(function () {
             //更新数据
 
             // live 的  logo  nick_name ID  people 
             var server = 'http://139.199.23.160:8080/qmzb';
+            server = 'http://192.168.1.37:8080/qmzb'
+
             var uid = $.getUrlParam("liveid");
-              // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
-            if (uid) {
-                //判断uid
-                var form = new FormData();
-                form.append("login_uid", uid); // 
+            // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
 
-                fetch(server + "/public/my_info", {
-                    method: 'POST',
-                    mode: 'cors',
-                    cache: 'default',
-                    body: form
-                }).then((response) => response.json()).then(function (data) {
+            if (uid == null) {
+                uid = 0;
+            }
 
-                    if (data.code == 200) {
-                        //请求成功  判断data.data 不为空
-                        if (data.data.length != 0) {
-                            //有数据
-                            // 加载数据 
+            //判断uid
+            var form = new FormData();
+            form.append("login_uid", uid); // 
 
-                            $(".video-box").css("background", "url(" + data.data.icon + ") no-repeat").css(
+            fetch(server + "/public/my_info", {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'default',
+                body: form
+            }).then((response) => response.json()).then(function (data) {
+
+                if (data.code == 200) {
+                    //请求成功  判断data.data 不为空
+                    if (data.data.length != 0) {
+                        //有数据
+                        // 加载数据 
+                        if (data.data.status == 1) {
+                            $(".video-box").css("background", "url(" + data.data.icon +
+                                ") no-repeat").css(
                                 "background-size", "100% 100%");
                             $(".nick_logo").attr("src", data.data.user_picture);
                             $(".nick_name").html(data.data.nick_name);
@@ -208,36 +210,39 @@
                                     video.play();
                                 });
                             }
-
-                            var fram = document.createDocumentFragment();
-
-                            if (data.data.room_list.length) {
-                                for (var i = 0; i < data.data.room_list.length; i++) {
-                                    var element = data.data.room_list[i];
-                                    var li = document.createElement("li");
-                                    li.innerHTML = ' <a href="h5share_live.html?liveid=' + element.uid +
-                                        '"><img src="' + element.icon + '" alt=""></a>';
-                                    fram.appendChild(li);
-                                }
-                            }
-
-                            $(".other-play-video-content").html(fram);
-
-                            $(".video-container").show();
-
-
                         } else {
-                            //没有数据
                             $(".erro-img").show().siblings(".video-container").hide();
                         }
+
+
+
+
+                        var fram = document.createDocumentFragment();
+
+                        if (data.data.room_list.length) {
+                            for (var i = 0; i < data.data.room_list.length; i++) {
+                                var element = data.data.room_list[i];
+                                var li = document.createElement("li");
+                                li.innerHTML = ' <a href="h5share_live.html?liveid=' + element.uid +
+                                    '"><img src="' + element.icon + '" alt=""></a>';
+                                fram.appendChild(li);
+                            }
+                        }
+
+                        $(".other-play-video-content").html(fram);
+
+                        $(".video-container").show();
+
+
                     } else {
+                        //没有数据
                         $(".erro-img").show().siblings(".video-container").hide();
                     }
-                });
-            } else {
-                // alert('页面丢失');
-                $(".erro-img").show().siblings(".video-container").hide();
-            }
+                } else {
+                    $(".erro-img").show().siblings(".video-container").hide();
+                }
+            });
+
             //弹幕  到 15个删除第一个
         });
     </script>

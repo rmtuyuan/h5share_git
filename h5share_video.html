@@ -163,9 +163,11 @@
             var vid = $.getUrlParam("vid");
             //获取分享人的ID
             // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
+               
 
-
-            if (vid) {
+                if(vid==null){
+                    vid=0;
+                }
                 //判断uid
                 var form = new FormData();
                 form.append("vid", vid); // 
@@ -221,10 +223,7 @@
                         $(".erro-img").show().siblings(".video-container").hide();
                     }
                 });
-            } else {
-                // alert('页面丢失');
-                $(".erro-img").show().siblings(".video-container").hide();
-            }
+        
             //弹幕  到 15个删除第一个
         });
         })

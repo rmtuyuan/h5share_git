@@ -267,12 +267,12 @@ a.font-fa.text>span.text-color-fe {
 }
 
 .img-front-box {
-    background: url("../img/attestation_img/id.png") no-repeat;
+    background: url("../img/id1.png") no-repeat;
     background-size: 100% 100%;
 }
 
 .img-back-box {
-    background: url("../img/attestation_img/id.png") no-repeat;
+    background: url("../img/id2.png") no-repeat;
     background-size: 100% 100%;
 }
 
