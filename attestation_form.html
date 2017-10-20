@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <title>全民直播-认证主播</title>
+    <title>全民直播-实名认证</title>
     <meta name="description" content="">
 
     <meta name="keywords" content="" />
@@ -34,7 +34,7 @@
     <header>
 
     </header>
-    <div class="nav" style=" visibility: hidden;">
+    <div class="nav" style=" display:none">
         <div class="container nav-bar">
             <a href="javascript:;" onclick="history.back()" class="form-nav"> <i class="fa fa-angle-left"></i></a>
             <a href="#" class="upload-img-back upload-img-nav slide-upload-box slide-upload-box-2" style="display:none;"> <i class="fa fa-angle-left"></i></a>
@@ -99,14 +99,57 @@
                             </div>
                         </div>
                     </div>
-                    <div class="atte-form-con">
-                        <div class="container">
-                            <div class="atte-form-con-col betten">
-                                <p>上传证件</p>
-                                <a href="#" class="font-fa slide-upload-box  slide-upload-box-1"> <i class="fa fa-angle-right"></i> </a>
+                   <div class="atte-upload-img-box atte-h5-form-box">
+                <div class="atte-form-title">
+                    <p class="container">
+                        上传身份证
+                    </p>
+                </div>
+                <div class="atte-upload-img-col">
+                    <div class="container">
+                        <div class="atte-atte-upload-info">
+                            <span class="text-color-fe">*</span> 上传前请查看示例，确认上传图片清晰、注意反光。
+                        </div>
+                        <div class="atte-atte-upload-section">
+                            <div class="atte-atte-upload-row">
+                                <div class="img-box">
+                                    <div class="img-front-box">
+                                        <img src="img/id1.png" alt="">
+                                    </div>
+                                </div>
+                                <p class="img-box-txt">
+                                    手持身份证
+                                </p>
+                                <div class="img-box-btn">
+                                    <p style="display:none;" class="not-upload-info">身份证正面照片</p>
+                                    <input type="file" accept="image/*" capture="camera" name="pic_id_front" class="erroed af-input atte-upimg-ipt">                                    上传图片
+                                </div>
+                            </div>
+                            <div class="atte-atte-upload-row">
+                                <div class="img-box">
+                                    <div class="img-back-box">
+                                        <img src="img/id2.png" alt="">
+                                    </div>
+                                </div>
+                                <p class="img-box-txt">
+
+                                    身份证国徽面
+                                </p>
+                                <div class="img-box-btn">
+                                    <p style="display:none;" class="not-upload-info"> 身份证国徽面照片</p>
+                                    <input type="file" accept="image/*" capture="camera" name="pic_id_back" class="erroed af-input atte-upimg-ipt">                                    上传图片
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!--<div class="upload-submit-btn-box">
+                    <div class="container">
+                        <a href="#" class="upload-submit-btn">提交</a>
+                    </div>
+                </div>-->
+            </div>
+
                 </div>
                 <div class="atte-form-title">
                     <p class="container">
@@ -143,57 +186,7 @@
                 </div>
             </div>
             <!--上传图片-->
-            <div class="atte-upload-img-box atte-h5-form-box">
-                <div class="atte-form-title">
-                    <p class="container">
-                        上传身份证
-                    </p>
-                </div>
-                <div class="atte-upload-img-col">
-                    <div class="container">
-                        <div class="atte-atte-upload-info">
-                            <span class="text-color-fe">*</span> 上传前请查看示例，确认上传图片清晰、注意反光。
-                        </div>
-                        <div class="atte-atte-upload-section">
-                            <div class="atte-atte-upload-row">
-                                <div class="img-box">
-                                    <div class="img-front-box">
-                                        <img src="img/id1.png" alt="">
-                                    </div>
-                                </div>
-                                <p class="img-box-txt">
-                                    身份证正面
-                                </p>
-                                <div class="img-box-btn">
-                                    <p style="display:none;" class="not-upload-info">身份证正面照片</p>
-                                    <input type="file" accept="image/*" capture="camera" name="pic_id_front" class="erroed af-input atte-upimg-ipt">                                    上传图片
-                                </div>
-                            </div>
-                            <div class="atte-atte-upload-row">
-                                <div class="img-box">
-                                    <div class="img-back-box">
-                                        <img src="img/id2.png" alt="">
-                                    </div>
-                                </div>
-                                <p class="img-box-txt">
-
-                                    身份证国徽面
-                                </p>
-                                <div class="img-box-btn">
-                                    <p style="display:none;" class="not-upload-info"> 身份证国徽面照片</p>
-                                    <input type="file" accept="image/*" capture="camera" name="pic_id_back" class="erroed af-input atte-upimg-ipt">                                    上传图片
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="upload-submit-btn-box">
-                    <div class="container">
-                        <a href="#" class="upload-submit-btn">提交</a>
-                    </div>
-                </div>
-            </div>
-
+          
 
         </div>
 

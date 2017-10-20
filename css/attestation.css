@@ -419,8 +419,8 @@ a.font-fa.text>span.text-color-fe {
 }
 
 .img-box-txt {
-    margin: .3rem 0;
-    margin-bottom: .4rem;
+    margin: .1rem 0;
+  
     display: flex;
     display: -webkit-box;
     /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
