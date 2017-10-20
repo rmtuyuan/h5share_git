@@ -37,12 +37,12 @@
     <header>
 
     </header>
-     <div class="nav" style=" display: none;">
+    <div class="nav" style=" display: none;">
         <div class="container nav-bar">
             <a href="javascript:;" onclick="GoBackApp()" class="form-nav"> <i class="fa fa-angle-left"></i></a>
-          
+
             <span class="text-color-fe form-nav">实名认证结果</span>
-           
+
         </div>
 
 
@@ -70,10 +70,10 @@
         <div class="atte-b-info-img  atte-after-succ-info" style="display:none;">
             <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
         </div>
-        <div class="atte-b-info-btn atte-after-succ-info">
+        <!--<div class="atte-b-info-btn atte-after-succ-info">
             <a href="javascript:;" onclick="nowPlay()">立即开播</a>
             <a href="javascript:;" onclick="nowNotPlay()" class="not-play">暂不开播</a>
-        </div>
+        </div>-->
         <div class="atte-b-info-btn atte-after-ing-info">
 
         </div>
@@ -82,68 +82,27 @@
             <a href="#" style="display:none">更多认证方式</a>
         </div>
     </div>
-    
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    <script src="js/fetch.js"></script>
-    <script src="js/browser.min.js"></script>
-    <script src="m_js/attestation.js"></script>
+  <!--<script src="js/jquery-1.11.3.min.js"></script>
+   <script src="js/fetch.js"></script>
+   <script src="js/browser.min.js"></script>
+   <script src="m_js/attestation.js" ></script>
+    <script src="m_js/atte_after.js"></script>-->
+ 
+   <script src="js/lazyload-min.js"></script>
+   
     <script>
         //获取 id token  fetch 刷新页面
-        $(function () {
-            var login_uid = $.getUrlParam("login_uid");
-            var login_token = $.getUrlParam("login_token");
-
-            var form_2 = new FormData();
-            form_2.append("login_uid", login_uid);
-            form_2.append("login_token", login_token);
-            fetch(server + "/user/authentication_status", {
-                method: 'POST',
-                //headers: myHeaders,
-                mode: 'cors',
-                cache: 'default',
-                body: form_2
-            }).then((response) => response.json()).then(function (data) {
-                if (data.code == 200) {
-                    if (data.data.status == 0) {
-                        //0=未处理/1=已通过/-1=未通过/-2=未提交
-                        //审核中
-                        $(".atte-after-ing-info").css("display", "flex");
-                        //审核中的 图片 
-                       
-                    } else if (data.data.status == 1) {
-                        $(".atte-after-succ-info").css("display", "flex");
-
-                    } else if (data.data.status == -1) {
-                        $(".atte-after-erro-info-txt").html(data.refuse_reason);
-                        $(".atte-after-erro-info").css("display", "flex");
-                      
-                    } else {
-                        window.location.href = 'attestation_before.html?login_uid=' + login_uid +
-                            "&login_token=" + login_token;
-                    }
-                } else {
-                    window.location.href = "attestation_form.html";
-                    showInfo('当前网络不稳定,请刷新页面');
-                }
-
-            });
-
-            $(".now-go-check").click(function (e) {
-                e.preventDefault();
-                window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" +
-                    login_token;
-            });
-
-        });
-        function nowPlay() {
-             
-        }
-         function nowNotPlay() {
-            
-        }
+     
+        // Load the YUI Dom, Event, and Animation libraries if they haven't already
+        // been loaded.
+        LazyLoad.loadOnce([
+            'js/jquery-1.11.3.min.js',
+            'js/fetch.js', 
+             'js/browser.min.js',
+            'm_js/attestation.js',
+             'm_js/atte_after.js'
+        ]);
     </script>
 </body>
 
 </html>
-

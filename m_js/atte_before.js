@@ -67,32 +67,8 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 
-
-
-// 表单验证 上传图片
-function showInfo(text) {
-    $("body").addClass("overflow-hidden");
-    $(".info-text").html(text);
-    $(".modal-info").fadeIn(300);
-
-    setTimeout(function () {
-        $("body").removeClass("overflow-hidden");
-        $(".modal-info").fadeOut(300);
-    }, 1000);
-}
-$(".info-sure").click(function (e) {
-    e.preventDefault();
-    $("body").removeClass("overflow-hidden");
-    $(".modal-info").hide();
-});
-
-function openHref(url) {
-    $(".info-sure-2").click(function (e) {
-        e.preventDefault();
-        window.location.href = url;
-    });
-}
 (function ($) {
     //获取url参数的封装函数
     //decodeURI() 和 decodeURIComponent()
@@ -116,9 +92,14 @@ function openHref(url) {
 })(jQuery);
 
 var server = 'http://139.199.23.160:8080/qmzb';
-// var server = 'http://192.168.1.170:8080/qmzb';
-
-function GoBackApp() {}
+$(function () {
+    var login_uid = $.getUrlParam("login_uid");
+    var login_token = $.getUrlParam("login_token");
+    $(".now-go-check").click(function (e) {
+        e.preventDefault();
+        window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" + login_token;
+    });
+});
 
 /***/ })
 /******/ ]);

@@ -67,32 +67,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-
-
-// 表单验证 上传图片
-function showInfo(text) {
-    $("body").addClass("overflow-hidden");
-    $(".info-text").html(text);
-    $(".modal-info").fadeIn(300);
-
-    setTimeout(function () {
-        $("body").removeClass("overflow-hidden");
-        $(".modal-info").fadeOut(300);
-    }, 1000);
-}
-$(".info-sure").click(function (e) {
-    e.preventDefault();
-    $("body").removeClass("overflow-hidden");
-    $(".modal-info").hide();
-});
-
-function openHref(url) {
-    $(".info-sure-2").click(function (e) {
-        e.preventDefault();
-        window.location.href = url;
-    });
-}
+"use strict";
 (function ($) {
     //获取url参数的封装函数
     //decodeURI() 和 decodeURIComponent()
@@ -116,9 +91,54 @@ function openHref(url) {
 })(jQuery);
 
 var server = 'http://139.199.23.160:8080/qmzb';
-// var server = 'http://192.168.1.170:8080/qmzb';
 
-function GoBackApp() {}
+$(function () {
+
+    var login_uid = $.getUrlParam("login_uid");
+    var login_token = $.getUrlParam("login_token");
+
+    var form_2 = new FormData();
+    form_2.append("login_uid", login_uid);
+    form_2.append("login_token", login_token);
+    fetch(server + "/user/authentication_status", {
+        method: 'POST',
+        //headers: myHeaders,
+        mode: 'cors',
+        cache: 'default',
+        body: form_2
+    }).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        if (data.code == 200) {
+
+            if (data.data.status == 0) {
+                //0=未处理/1=已通过/-1=未通过/-2=未提交
+                //审核中
+                $(".atte-after-ing-info").css("display", "flex");
+                //审核中的 图片 
+            } else if (data.data.status == 1) {
+                $(".atte-after-succ-info").css("display", "flex");
+            } else if (data.data.status == -1) {
+                $(".atte-after-erro-info-txt").html(data.data.refuse_reason);
+                $(".atte-after-erro-info").css("display", "flex");
+            } else {
+                window.location.href = 'attestation_before.html?login_uid=' + login_uid + "&login_token=" + login_token;
+            }
+        } else {
+            // window.location.href = "attestation_form.html";
+            showInfo('当前网络不稳定,请刷新页面');
+        }
+    });
+
+    $(".now-go-check").click(function (e) {
+        e.preventDefault();
+        window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" + login_token;
+    });
+});
+
+function nowPlay() {}
+
+function nowNotPlay() {}
 
 /***/ })
 /******/ ]);

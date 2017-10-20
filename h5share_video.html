@@ -110,7 +110,7 @@
                 <div class="qrcode-txt">
                     <p>长按或者扫描二维码</p>
                     <h4>查看更多精彩</h4>
-                    <a href="#">立即打开</a>
+                    <a href="#" class="now-open">立即打开</a>
                 </div>
             </div>
             <div class="footer-con-2">
@@ -185,12 +185,13 @@
                             //有数据
                             // 加载数据 
                           if(data.data.status==1){
-                              $(".video-box").css("background", "rgba(3,3,3,.6) url(" + data.data.icon + ") no-repeat").css(
+                              $(".video-box").css("background", "rgba(3,3,3,.6) url(" + data.data.maxicon + ") no-repeat center ").css(
                                 "background-size", "100% 100%").css("height","100vh");
+                              
                             $(".nick_logo").attr("src", data.data.logo);
                             $(".nick_name").html(data.data.nickName);
                             $(".count").html(parseInt(data.data.count));
-                            $(".video-box>video").attr("src", data.data.url);
+                             $(".video-box>video").attr("src", data.data.url);
                            
                           }else{
                             
