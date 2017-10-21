@@ -517,6 +517,7 @@ var atteRolu = {
                     ipt.parent().siblings(".img-box").find("div").css("background", "url(" + data.data.url + ") no-repeat").css("background-size", "100% 100%").find("img").attr("src", data.data.url);
                     ipt.addClass("actived").removeClass("erroed");
                     atteRolu[ipt.attr("name")] = data.data.url;
+                  
                 } else {
                     ipt.addClass("erroed").removeClass("actived");
                     showInfo('当前网络不稳定,上传失败,请重新上传');
@@ -715,7 +716,7 @@ var atteRolu = {
                 }).then(function (data) {
                     if (data.code == 200) {
                         // 成功 跳转网页
-
+                       
                         window.location.href = 'attestation_after.html?login_uid=' + atteRolu.login_uid + "&login_token=" + atteRolu.login_token;
                     } else if (data.code == 400) {
                         showInfo(data.message);
@@ -739,7 +740,7 @@ var atteRolu = {
                     showInfo("性别没选择");
                 } else if ($($("input.af-input.erroed")[0]).hasClass("af-id-number")) {
                     //身份证号有问题
-                    console.log(isCardID($($("input.af-input.erroed")[0]).val()));
+                 
                     if (isCardID($($("input.af-input.erroed")[0]).val()) != true) {
                         showInfo(isCardID($($("input.af-input.erroed")[0]).val()));
                     }

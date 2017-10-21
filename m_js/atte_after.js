@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+
 (function ($) {
     //获取url参数的封装函数
     //decodeURI() 和 decodeURIComponent()
@@ -89,17 +89,30 @@
         return null;
     };
 })(jQuery);
+function showInfo(text) {
+    $("body").addClass("overflow-hidden");
+    $(".info-text").html(text);
+    $(".modal-info").fadeIn(300);
 
+    setTimeout(function () {
+        $("body").removeClass("overflow-hidden");
+        $(".modal-info").fadeOut(300);
+    }, 1000);
+}
 var server = 'http://139.199.23.160:8080/qmzb';
 
 $(function () {
 
     var login_uid = $.getUrlParam("login_uid");
     var login_token = $.getUrlParam("login_token");
-
+     $(".now-go-check").click(function (e) {
+        e.preventDefault();
+        window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" + login_token;
+    });
     var form_2 = new FormData();
     form_2.append("login_uid", login_uid);
     form_2.append("login_token", login_token);
+    var oldtime=new Date();
     fetch(server + "/user/authentication_status", {
         method: 'POST',
         //headers: myHeaders,
@@ -110,7 +123,8 @@ $(function () {
         return response.json();
     }).then(function (data) {
         if (data.code == 200) {
-
+            var newtime=new Date();
+            console.log(newtime-oldtime);
             if (data.data.status == 0) {
                 //0=未处理/1=已通过/-1=未通过/-2=未提交
                 //审核中
@@ -122,11 +136,12 @@ $(function () {
                 $(".atte-after-erro-info-txt").html(data.data.refuse_reason);
                 $(".atte-after-erro-info").css("display", "flex");
             } else {
-                window.location.href = 'attestation_before.html?login_uid=' + login_uid + "&login_token=" + login_token;
+                $(".atte-b-main-box").show();
+                //window.location.href = 'attestation_before.html?login_uid=' + login_uid + "&login_token=" + login_token;
             }
         } else {
             // window.location.href = "attestation_form.html";
-            showInfo('当前网络不稳定,请刷新页面');
+            showInfo('当前网络不稳定');
         }
     });
 

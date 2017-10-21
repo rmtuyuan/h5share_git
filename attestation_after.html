@@ -17,17 +17,26 @@
     <script src="js/es5-shim.min.js"></script>
     <![endif]-->
     <!--   <link rel="icon" href="img/favicon.ico"/> -->
-    <link rel="stylesheet" href="css/font-awesome.css">
+   
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/attestation.css">
     <style>
-        .atte-b-main>div {
+        .atte-a-main>div {
             display: none;
         }
-
+        .atte-b-main-box{
+            display: none;
+        }
         .atte-b-main>.atte-b-info-img {
             display: flex;
+        }
+        .atte-b-main-box .atte-b-info-text{
+            text-align: center;
+            flex-direction:column;
+            -webkit-flex-direction:column;
+             -moz-flex-direction:column;
+
         }
     </style>
 </head>
@@ -62,13 +71,13 @@
             <p>失败原因: <span class="atte-after-erro-info-txt"></span></p>
         </div>
         <div class="atte-b-info-img atte-after-erro-info " style="display:none;">
-            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+            <img src="img/629d90d0-2ebc-4baa-be59-a7c6a53946e9.png" alt="">
         </div>
         <div class="atte-b-info-img atte-after-ing-info" style="display:none;">
-            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+            <img src="img/629d90d0-2ebc-4baa-be59-a7c6a53946e9.png" alt="">
         </div>
         <div class="atte-b-info-img  atte-after-succ-info" style="display:none;">
-            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+            <img src="img/629d90d0-2ebc-4baa-be59-a7c6a53946e9.png" alt="">
         </div>
         <!--<div class="atte-b-info-btn atte-after-succ-info">
             <a href="javascript:;" onclick="nowPlay()">立即开播</a>
@@ -83,14 +92,14 @@
         </div>
     </div>
 
-    <div class="atte-b-main">
+    <div class="atte-b-main  atte-b-main-box">
         <!--提示去认证-->
         <div class="atte-b-info-text">
             <h3>您还没有实名认证</h3>
             <p>根据相关法规，只有实名认证后才可以开播哦~</p>
         </div>
         <div class="atte-b-info-img">
-            <img src="img/attestation_img/gr_shiming_ren@3x.png" alt="">
+            <img src="img/629d90d0-2ebc-4baa-be59-a7c6a53946e9.png" alt="">
         </div>
         <div class="atte-b-info-btn">
             <a href="" style="display:none;">支付宝一键认证</a>
@@ -112,10 +121,9 @@
         // Load the YUI Dom, Event, and Animation libraries if they haven't already
         // been loaded.
         LazyLoad.loadOnce([
-            'js/jquery-1.11.3.min.js',
+            'http://libs.baidu.com/jquery/2.0.0/jquery.min.js',
             'js/fetch.js', 
-             'js/browser.min.js',
-            'm_js/attestation.js',
+             'm_js/attestation.js',
              'm_js/atte_after.js'
         ]);
     </script>
