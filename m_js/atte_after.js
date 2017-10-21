@@ -112,7 +112,7 @@ $(function () {
     var form_2 = new FormData();
     form_2.append("login_uid", login_uid);
     form_2.append("login_token", login_token);
-    var oldtime=new Date();
+  
     fetch(server + "/user/authentication_status", {
         method: 'POST',
         //headers: myHeaders,
@@ -123,8 +123,8 @@ $(function () {
         return response.json();
     }).then(function (data) {
         if (data.code == 200) {
-            var newtime=new Date();
-            console.log(newtime-oldtime);
+          
+          
             if (data.data.status == 0) {
                 //0=未处理/1=已通过/-1=未通过/-2=未提交
                 //审核中

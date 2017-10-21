@@ -716,7 +716,7 @@ var atteRolu = {
                 }).then(function (data) {
                     if (data.code == 200) {
                         // 成功 跳转网页
-                       
+                      
                         window.location.href = 'attestation_after.html?login_uid=' + atteRolu.login_uid + "&login_token=" + atteRolu.login_token;
                     } else if (data.code == 400) {
                         showInfo(data.message);
