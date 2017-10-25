@@ -44,12 +44,26 @@
         <div class="play-video">
             <div class="video-container" style="display:block">
 
-                <div class="video-box" style="">
-                    <video id="video" width='100%' autoplay poster="" width='100%' preload="auto" webkit-playsinline="true" src="" playsinline="true"
+                <div class="video-box" >
+                    <!--<video id="video" width='100%' class='vjs-big-play-centered' autoplay poster="" width='100%' preload="auto" webkit-playsinline="true" src="" playsinline="true"
                         x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint">
 
-                    </video>
+                    </video>-->
+                    
+                    <object id="video" name="player" width="100%" height="100%" type="application/x-shockwave-flash" data="http://s7.qhres.com/static/c717689361936f78.swf" style="visibility: visible;">
+  <param name="menu" value="false"><param name="allowscriptaccess" value="always">
+  
+ <param name="flashvars" value="uploadImgUrl=http://webh.huajiao.com/screenshot/upload&uploadImgQuality=70&useRTMP=false&delay=0&channelId=&sessionId=&businessId=huajiao&machineId=&disabledBarrage=true&isCloudControl=0&useFlash=0&changeBtn=false&userId=&sn=http://static.s3.huajiao.com/Object.access/hj-video/OTczMTMxODQxNTA4NDg5NTA2MjIwMTQwNTUyMDExNS5tcDQ=&type=mp4">
+   
+</object>
                 </div>
+                 <div class="video-box" style=""> 
+                     
+                       <div class="vd">  
+                        
+                     
+</div>
+                      </div>
 
                 <!--x5-video-player-fullscreen="true"               
                  x5-video-orientation="portraint"-->
@@ -96,13 +110,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="video-tip video-tip-btm">
-                    <!--输入框-->
+                <!--<div class="video-tip video-tip-btm">
+                   
                     <p class="input-con">
                         <span> <b class="nick_name" style="font-weight:500;"></b>邀请你陪TA聊天</span>
                         <a href="#">接受</a>
                     </p>
-                </div>
+                </div>-->
             </div>
             <div class="erro-img">
                 <!--<img src="img/err-d4bcf8ad0d.png" alt="">-->
@@ -161,87 +175,91 @@
   
     <script src="m_js/h5share.js"></script>
     <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+
+   
+<script src="//nos.netease.com/vod163/nep.min.js"></script>
+<script src='m_js/swfobject.js'></script>
     <script>
         $(function () {
             //更新数据
-
+              $(".video-box>video").attr("src", "http://xy0-hls.live.huajiao.com/live_huajiao_v2/_LC_XY0_non_8297414615087340321902346_OX/index.m3u8");
             // live 的  logo  nick_name ID  people 
-            var server = 'http://139.199.23.160:8080/qmzb';
-            server = 'http://192.168.1.37:8080/qmzb'
+            // var server = 'http://139.199.23.160:8080/qmzb';
+         
 
-            var uid = $.getUrlParam("liveid");
-            // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
+            // var uid = $.getUrlParam("liveid");
+            // // var shareid=$.getUrlParam("shareid");//放享人ID 以后加经验
 
-            if (uid == null) {
-                uid = 0;
-            }
+            // if (uid == null) {
+            //     uid = 0;
+            // }
 
-            //判断uid
-            var form = new FormData();
-            form.append("login_uid", uid); // 
+            // //判断uid
+            // var form = new FormData();
+            // form.append("login_uid", uid); // 
 
-            fetch(server + "/public/my_info", {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'default',
-                body: form
-            }).then((response) => response.json()).then(function (data) {
+            // fetch(server + "/public/my_info", {
+            //     method: 'POST',
+            //     mode: 'cors',
+            //     cache: 'default',
+            //     body: form
+            // }).then((response) => response.json()).then(function (data) {
 
-                if (data.code == 200) {
-                    //请求成功  判断data.data 不为空
-                    if (data.data.length != 0) {
-                        //有数据
-                        // 加载数据 
-                        if (data.data.status == 1) {
-                            $(".video-box").css("background", "url(" + data.data.icon +
-                                ") no-repeat").css(
-                                "background-size", "100% 100%");
-                            $(".nick_logo").attr("src", data.data.user_picture);
-                            $(".nick_name").html(data.data.nick_name);
-                            $(".nick_number").html("直播ID" + data.data.number);
-                            $(".room_user_count").html(data.data.room_user_count + "人");
-                            $(".video-box>video").attr("src", data.data.hls_pull_url);
-                            if (Hls.isSupported()) {
-                                var video = document.getElementById('video');
-                                var hls = new Hls();
-                                hls.loadSource(data.data.hls_pull_url);
-                                hls.attachMedia(video);
-                                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                                    video.play();
-                                });
-                            }
-                        } else {
-                            $(".erro-img").show().siblings(".video-container").hide();
-                        }
-
-
+            //     if (data.code == 200) {
+            //         //请求成功  判断data.data 不为空
+            //         if (data.data.length != 0) {
+            //             //有数据
+            //             // 加载数据 
+            //             if (data.data.status == 1) {
+            //                 $(".video-box").css("background", "url(" + data.data.icon +
+            //                     ") no-repeat").css(
+            //                     "background-size", "100% 100%");
+            //                 $(".nick_logo").attr("src", data.data.user_picture);
+            //                 $(".nick_name").html(data.data.nick_name);
+            //                 $(".nick_number").html("直播ID" + data.data.number);
+            //                 $(".room_user_count").html(data.data.room_user_count + "人");
+            //                 $(".video-box>video").attr("src", data.data.hls_pull_url);
+            //                 if (Hls.isSupported()) {
+            //                     var video = document.getElementById('video');
+            //                     var hls = new Hls();
+            //                     hls.loadSource(data.data.hls_pull_url);
+            //                     hls.attachMedia(video);
+            //                     hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            //                         video.play();
+            //                     });
+            //                 }
+            //             } else {
+            //                 $(".erro-img").show().siblings(".video-container").hide();
+            //             }
 
 
-                        var fram = document.createDocumentFragment();
+    
 
-                        if (data.data.room_list.length) {
-                            for (var i = 0; i < data.data.room_list.length; i++) {
-                                var element = data.data.room_list[i];
-                                var li = document.createElement("li");
-                                li.innerHTML = ' <a href="h5share_live.html?liveid=' + element.uid +
-                                    '"><img src="' + element.icon + '" alt=""></a>';
-                                fram.appendChild(li);
-                            }
-                        }
+            //             var fram = document.createDocumentFragment();
 
-                        $(".other-play-video-content").html(fram);
+            //             if (data.data.room_list.length) {
+            //                 for (var i = 0; i < data.data.room_list.length; i++) {
+            //                     var element = data.data.room_list[i];
+            //                     var li = document.createElement("li");
+            //                     li.innerHTML = ' <a href="h5share_live.html?liveid=' + element.uid +
+            //                         '"><img src="' + element.icon + '" alt=""></a>';
+            //                     fram.appendChild(li);
+            //                 }
+            //             }
 
-                        $(".video-container").show();
+            //             $(".other-play-video-content").html(fram);
+
+            //             $(".video-container").show();
 
 
-                    } else {
-                        //没有数据
-                        $(".erro-img").show().siblings(".video-container").hide();
-                    }
-                } else {
-                    $(".erro-img").show().siblings(".video-container").hide();
-                }
-            });
+            //         } else {
+            //             //没有数据
+            //             $(".erro-img").show().siblings(".video-container").hide();
+            //         }
+            //     } else {
+            //         $(".erro-img").show().siblings(".video-container").hide();
+            //     }
+            // });
 
             //弹幕  到 15个删除第一个
         });

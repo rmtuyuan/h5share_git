@@ -105,10 +105,17 @@ $(function () {
 
     var login_uid = $.getUrlParam("login_uid");
     var login_token = $.getUrlParam("login_token");
-     $(".now-go-check").click(function (e) {
+    $(".atte-b-info-btn").on("touch click" ,".now-go-check",function (e) {  
+        
         e.preventDefault();
         window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" + login_token;
     });
+     $(".now-go-check").click(function (e) {
+      
+        e.preventDefault();
+        window.location.href = 'attestation_form.html?login_uid=' + login_uid + "&login_token=" + login_token;
+    });
+   
     var form_2 = new FormData();
     form_2.append("login_uid", login_uid);
     form_2.append("login_token", login_token);
